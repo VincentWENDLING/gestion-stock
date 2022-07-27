@@ -10,7 +10,6 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import Spinner from '../components/Misc/Spinner';
 import GoBack from '../components/Misc/GoBack';
 import {ItemCategory, Order} from '../types';
-import {proxyPrint} from '../utils';
 
 const OrderPage = () => {
   const navigate = useNavigate();
@@ -75,9 +74,11 @@ const OrderPage = () => {
   } else {
     useEffect(() => {
       (async () => {
-        store.resetOrder();
+        await store.resetOrder();
+        setItemCategories(store.itemCategories);
         setDataLoading(false);
         setIsOrdered(false); // making sure the order is not considered as "Ordered"
+        setDate(store.order.created_at);
       })();
     }, []);
   }

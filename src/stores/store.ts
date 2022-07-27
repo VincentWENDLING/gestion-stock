@@ -1,4 +1,6 @@
 import {makeAutoObservable} from 'mobx';
+import {makePersistable} from 'mobx-persist-store';
+
 import {
   getContainerCategories,
   getContainers,
@@ -81,6 +83,17 @@ class Store {
     this.initRestaurants();
 
     makeAutoObservable(this);
+
+    makePersistable(this, {
+      name: 'Store',
+      properties: [
+        'itemCategories',
+        'defaultItems',
+        'restaurant',
+        'containerCategories',
+      ],
+      storage: window.localStorage,
+    });
   }
 
   async initRestaurants() {
@@ -96,6 +109,14 @@ class Store {
    */
   initOrder() {
     this.order.items = []; // emptying the array, just in case
+
+    this.restaurant.id = this.user.restaurant_id;
+    for (const restaurant of this.restaurants) {
+      if (restaurant.id === this.restaurant.id) {
+        this.restaurant.name = restaurant.name;
+        this.restaurant.address = restaurant.address;
+      }
+    }
 
     for (const item of this.defaultItems) {
       this.order.items.push({
@@ -187,6 +208,12 @@ class Store {
    * @param category This is the ItemCategory that we want to add to the store
    */
   addItemCategory(category: ItemCategory) {
+    for (const itemCategory of this.itemCategories) {
+      if (itemCategory.name === category.name) {
+        return;
+      }
+    }
+    console.log('added:', category.name)
     this.itemCategories.push(category);
   }
 
@@ -252,6 +279,11 @@ class Store {
    * @param category This is the ContainerCategory that we want to add to the store
    */
   addContainerCategory(category: ContainerCategory) {
+    for (const containerCategory of this.containerCategories) {
+      if (category.name === containerCategory.name) {
+        return;
+      }
+    }
     this.containerCategories.push(category);
   }
 
@@ -488,15 +520,6 @@ class Store {
     };
 
     this.initOrder();
-
-    // changing the items inside the "default" list of items
-    for (const category of this.itemCategories) {
-      for (const itemInCat of category.items) {
-        itemInCat.quantity = 0;
-        itemInCat.container = 'Bac 1/6 profond';
-        itemInCat.container_id = '56262456-d89a-4d8b-b833-be377504f88b';
-      }
-    }
   }
 
   /**

@@ -13,6 +13,7 @@ specifiers:
   eslint: ^8.20.0
   gts: ^3.1.0
   mobx: ^6.6.1
+  mobx-persist-store: ^1.0.6
   mobx-react: ^7.5.1
   postcss: ^8.4.13
   react: ^18.0.0
@@ -27,6 +28,7 @@ dependencies:
   daisyui: 2.18.0_cr4sis33dk4di3xnobyqnqmrf4
   gts: 3.1.0_typescript@4.6.4
   mobx: 6.6.1
+  mobx-persist-store: 1.0.6_mobx@6.6.1
   mobx-react: 7.5.1_fxko2slkw6buwovcebnwavdcya
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
@@ -2490,6 +2492,14 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
+
+  /mobx-persist-store/1.0.6_mobx@6.6.1:
+    resolution: {integrity: sha512-GOV1/0H2bMQhsJKpwRrR74c+B7wl9sOSwMeq7ed1PPsIanW/aYVj0RaQDqVOTYKJfeLV9wNGnWk0EATWprNluw==}
+    peerDependencies:
+      mobx: '*'
+    dependencies:
+      mobx: 6.6.1
+    dev: false
 
   /mobx-react-lite/3.4.0_fxko2slkw6buwovcebnwavdcya:
     resolution: {integrity: sha512-bRuZp3C0itgLKHu/VNxi66DN/XVkQG7xtoBVWxpvC5FhAqbOCP21+nPhULjnzEqd7xBMybp6KwytdUpZKEgpIQ==}
