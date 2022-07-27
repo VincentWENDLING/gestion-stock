@@ -213,7 +213,6 @@ class Store {
         return;
       }
     }
-    console.log('added:', category.name)
     this.itemCategories.push(category);
   }
 
