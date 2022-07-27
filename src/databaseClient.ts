@@ -17,7 +17,7 @@ export const logIn = async (username: string, password: string) => {
   let {data: user} = await supabase
     .from('users')
     .select('*')
-    .eq('username', username);
+    .eq('username', username.toLowerCase());
 
   let errorMessage = '';
 
@@ -29,7 +29,6 @@ export const logIn = async (username: string, password: string) => {
   } else {
     const userSingle = user[0]; // user is an array of size 1
     if (userSingle.password === password) {
-      //console.log(userSingle)
       return [userSingle, errorMessage];
     } else {
       errorMessage = "Le nom d'utilisateur ou le mot de passe est incorrect";
@@ -226,6 +225,16 @@ export const getItemCategories = async () => {
   }
 
   return tmp;
+};
+
+export const getItems = async () => {
+  const {data} = await supabase.from('item').select('*');
+
+  return data === null ? [] : data;
+};
+
+export const deleteItemByID = async (itemID: string) => {
+  await supabase.from('item').delete().eq('id', itemID);
 };
 
 /**************************** CONTAINERS ****************************/

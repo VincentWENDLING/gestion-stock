@@ -483,8 +483,8 @@ class Store {
       items: [],
       status: 'On order',
       comment: '',
-      created_at: '',
-      restaurant_id: '',
+      created_at: new Date().toLocaleDateString('en-CA'),
+      restaurant_id: this.user.restaurant_id,
     };
 
     this.initOrder();

@@ -21,9 +21,13 @@ Par défaut, le site se trouvera à l'adresse suivante: `http://locahost:3000`
 Il existe pour l'instant trois utilisateurs par défaut:
 |Username|Password|Rôle|
 |--------|--------|----|
-|Vincent|Vincent|Manager|
-|Vincito|Vincito|Labo|
-|Vincenzo|Vincenzo|Livreur|
-|Admin|Admin|Admin|
+|vincent|vincent|Manager|
+|vincito|vincito|Labo|
+|vincenzo|vincenzo|Livreur|
+|admin|admin|Admin|
+|manager|manager|Manager|
+
+* vincent est manager au restaurant "Krutenau".
+* manager est manager au food truck.
 
 **NB:** Même avec ces crendentials, on ne peut pas se connecter sans avoir accès aux variables d'environnement citées plus haut.

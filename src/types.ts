@@ -111,6 +111,15 @@ export type WasteDB = {
   restaurant_id: string;
 };
 
+export type ItemInDB = {
+  id: string;
+  name: string;
+  labPriority: number;
+  orderPriority: number;
+  category: string;
+  default_container: string;
+};
+
 export type OrderItem = {
   id: string;
   name: string;

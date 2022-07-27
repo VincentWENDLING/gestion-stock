@@ -29,7 +29,7 @@ const AddUserModal = () => {
     } else {
       setUsernameNotOK(false);
       setPasswordNotOK(false);
-      addUser(username, password, role, restaurantID);
+      addUser(username.toLowerCase(), password, role, restaurantID);
 
       setUsername(''); // reseting the state
       setPassword('');
