@@ -37,7 +37,7 @@ const AddRestaurantModal = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold text-center mb-4">
-            Ajouter un utilisateur
+            Ajouter un restaurant
           </h3>
           <form action="submit" className="flex flex-col gap-4">
             <label className="input-group w-full">
@@ -65,7 +65,7 @@ const AddRestaurantModal = () => {
               />
             </label>
             <button className="btn btn-primary" onClick={e => createUser(e)}>
-              Créer restaurant
+              Ajouter un restaurant
             </button>
           </form>
         </div>

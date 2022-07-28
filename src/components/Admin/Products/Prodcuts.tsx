@@ -4,6 +4,7 @@ import store from '../../../stores/store';
 import {ItemInDB, ItemCategory} from '../../../types';
 
 import Product from './Product';
+import AddProductModal from './AddProductModal';
 
 const filterItems = (
   items: Array<ItemInDB>,
@@ -11,34 +12,22 @@ const filterItems = (
   containerFilter: string,
   categoryFilter: string
 ) => {
-  let tmp: Array<ItemInDB> = items;
-
-  if (nameFilter !== '') {
-    // filter by name
-    tmp = items.filter((item: ItemInDB) => {
-      return item.name.includes(nameFilter);
-    });
-  }
-
-  if (containerFilter !== '') {
-    // filter by container
-    tmp = tmp.filter((item: ItemInDB) => {
+  return items
+    .filter((item: ItemInDB) => {
+      return item.name.toLowerCase().includes(nameFilter.toLowerCase());
+    })
+    .filter((item: ItemInDB) => {
       if (item.default_container === null) {
         return false;
       } else {
-        return item.default_container.includes(containerFilter);
+        return item.default_container
+          .toLowerCase()
+          .includes(containerFilter.toLowerCase());
       }
+    })
+    .filter((item: ItemInDB) => {
+      return item.category.toLowerCase().includes(categoryFilter.toLowerCase());
     });
-  }
-
-  if (categoryFilter !== '') {
-    // filter by category
-    tmp = tmp.filter((item: ItemInDB) => {
-      return item.category.includes(categoryFilter);
-    });
-  }
-
-  return tmp;
 };
 
 const Products = () => {
@@ -59,7 +48,7 @@ const Products = () => {
   }, []);
   return (
     <>
-      <h1>Produits</h1>
+      <AddProductModal />
       <div className="flex flex-col gap-4">
         <label
           htmlFor="my-modal-3"
@@ -67,7 +56,7 @@ const Products = () => {
         >
           Ajouter un produit
         </label>
-        <table className="max-w-screen-sm table table-compact md:table-normal">
+        <table className="w-full table table-compact md:table-normal">
           <thead>
             <tr>
               <th>Nom</th>

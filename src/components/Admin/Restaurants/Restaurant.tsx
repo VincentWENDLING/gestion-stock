@@ -1,6 +1,8 @@
 import {deleteRestaurantByID} from '../../../databaseClient';
 import {Restaurant as RestaurantType} from '../../../types';
 
+import DeleteButton from '../DeleteButton';
+
 interface RestaurantProp {
   restaurant: RestaurantType;
 }
@@ -16,12 +18,7 @@ const Restaurant = ({restaurant}: RestaurantProp) => {
         <td>{restaurant.name}</td>
         <td>{restaurant.address}</td>
         <td>
-          <button
-            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-            onClick={() => deleteRestaurant(restaurant.id)}
-          >
-            Supprimer
-          </button>
+          <DeleteButton deleteFunction={deleteRestaurant} id={restaurant.id} />
         </td>
       </tr>
     </>

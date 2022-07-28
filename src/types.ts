@@ -17,6 +17,7 @@ export type Item = {
 export type Container = {
   name: string;
   id: string;
+  category?: string;
 };
 
 export type ContainerCategory = {

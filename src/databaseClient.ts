@@ -237,12 +237,34 @@ export const deleteItemByID = async (itemID: string) => {
   await supabase.from('item').delete().eq('id', itemID);
 };
 
+export const addItem = async (
+  name: string,
+  category: string,
+  default_container: string,
+  labPriority: number,
+  orderPriority: number
+) => {
+  await supabase.from('item').insert([
+    {
+      name: name,
+      default_container: default_container,
+      category: category,
+      labPriority: labPriority,
+      orderPriority: orderPriority,
+    },
+  ]);
+};
+
+export const modifyItem = async (id: string, modifications: any) => {
+  await supabase.from('item').update(modifications).eq('id', id);
+};
+
 /**************************** CONTAINERS ****************************/
 
 export const getContainers = async () => {
   const {data: containers} = await supabase.from('container').select('*');
 
-  return containers;
+  return containers === null ? [] : containers;
 };
 
 export const getContainerNameByID = async (containerID: string) => {
@@ -272,6 +294,18 @@ export const getContainerCategories = async () => {
   }
 
   return tmp;
+};
+
+export const deleteContainer = async (id: string) => {
+  await supabase.from('container').delete().eq('id', id);
+};
+
+export const addContainer = async (name: string, category: string) => {
+  await supabase.from('container').insert([{name: name, category: category}]);
+};
+
+export const modifyContainer = async (id: string, modifications: any) => {
+  await supabase.from('container').update(modifications).eq('id', id);
 };
 
 /**************************** ORDER-ITEM-CONTAINER ****************************/
@@ -419,6 +453,10 @@ export const deleteRestaurantByID = async (restaurantID: string) => {
   return data;
 };
 
+export const modifyResataurant = async (id: string, modifications: any) => {
+  await supabase.from('restaurant').update(modifications).eq('id', id);
+};
+
 /**************************** LOGS ****************************/
 
 export const logUserAuth = async (userID: string, logMessage: string) => {
@@ -459,4 +497,8 @@ export const addUser = async (
       restaurant_id: restaurantID,
     },
   ]);
+};
+
+export const modifyUsers = async (id: string, modifications: any) => {
+  await supabase.from('user').update(modifications).eq('id', id);
 };

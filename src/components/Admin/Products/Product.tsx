@@ -1,5 +1,7 @@
 import {deleteItemByID} from '../../../databaseClient';
 
+import DeleteButton from '../DeleteButton';
+
 const Product = ({product}: any) => {
   const deleteProduct = (itemID: string) => {
     deleteItemByID(itemID);
@@ -12,13 +14,7 @@ const Product = ({product}: any) => {
         <td>{product.category}</td>
         <td>{product.default_container}</td>
         <td>
-          <button
-            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-            onClick={() => deleteProduct(product.id)}
-            disabled
-          >
-            Supprimer
-          </button>
+          <DeleteButton deleteFunction={deleteProduct} id={product.id} />
         </td>
       </tr>
     </>

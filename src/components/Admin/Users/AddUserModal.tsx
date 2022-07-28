@@ -103,7 +103,7 @@ const AddUserModal = () => {
               </select>
             </label>
             <button className="btn btn-primary" onClick={e => createUser(e)}>
-              Créer utilisateur
+              Ajouter utilisateur
             </button>
           </form>
         </div>

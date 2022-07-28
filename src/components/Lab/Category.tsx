@@ -43,7 +43,11 @@ const Category = ({itemsByCategory, restaurants, addItemToCancel}: any) => {
       <table className="z-0 w-full table table-compact lg:ml-8 md:table-normal">
         <thead>
           <tr>
-            <th rowSpan={2} style={{position: 'static'}} className="w-2/12">
+            <th
+              rowSpan={restaurants.length}
+              style={{position: 'static'}}
+              className="w-2/12"
+            >
               Produit
             </th>
             {restaurants
@@ -55,7 +59,7 @@ const Category = ({itemsByCategory, restaurants, addItemToCancel}: any) => {
                   {restaurant}
                 </th>
               ))}
-            <th rowSpan={2} className="w-2/12">
+            <th rowSpan={restaurants.length} className="w-2/12">
               Annulé ?
             </th>
           </tr>

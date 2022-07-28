@@ -1,5 +1,6 @@
 import {deleteUserByID} from '../../../databaseClient';
 import {FullUser} from '../../../types';
+import DeleteButton from '../DeleteButton';
 
 interface UserProp {
   user: FullUser;
@@ -17,12 +18,7 @@ const User = ({user}: UserProp) => {
         <td>{user.role}</td>
         <td>{user.restaurant === null ? 'Aucun' : user.restaurant.name}</td>
         <td>
-          <button
-            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-            onClick={() => deleteUser(user.id)}
-          >
-            Supprimer
-          </button>
+          <DeleteButton deleteFunction={deleteUser} id={user.id} />
         </td>
       </tr>
     </>
