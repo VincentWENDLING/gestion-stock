@@ -8,7 +8,9 @@ const AddUserModal = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('Manager');
-  const [restaurantID, setRestaurantID] = useState(store.restaurants[0].id);
+  const [restaurantID, setRestaurantID] = useState(
+    store.restaurants[0] !== undefined ? store.restaurants[0].id : ''
+  );
 
   const [usernameNotOK, setUsernameNotOK] = useState(false);
   const [passwordNotOK, setPasswordNotOK] = useState(false);
