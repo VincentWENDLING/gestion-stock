@@ -62,7 +62,8 @@ const Products = () => {
               <th>Nom</th>
               <th>Catégorie</th>
               <th>Unité par défaut</th>
-              <th>Action</th>
+              <th>Supprimer</th>
+              <th>Modifier</th>
             </tr>
           </thead>
           <tbody>

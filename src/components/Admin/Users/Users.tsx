@@ -32,6 +32,7 @@ const Users = () => {
               <th>Rôle</th>
               <th>Restaurant</th>
               <th>Supprimer</th>
+              <th>Modifier</th>
             </tr>
           </thead>
           <tbody>

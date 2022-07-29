@@ -1,20 +1,22 @@
 import {createPortal} from 'react-dom';
-import {modifyContainer} from '../../../databaseClient';
+import {modifyResataurant} from '../../../databaseClient';
 import {useState} from 'react';
 
 interface Props {
   id: string;
   previousName: string;
-  previousCategory: string | undefined;
+  previousAddress: string;
 }
 
-const ModifyContainerModal = ({id, previousName, previousCategory}: Props) => {
+const ModifyProductModal = ({id, previousName, previousAddress}: Props) => {
   const [name, setName] = useState(previousName);
-  const [category, setCategory] = useState(previousCategory);
-
-  const triggerModifyContainer = (e: any) => {
+  const [address, setAddress] = useState(previousAddress);
+  const triggerModifyRestaurant = (e: any) => {
     e.preventDefault();
-    modifyContainer(id, {name: name, category: category});
+    modifyResataurant(id, {
+      name: name,
+      address: address,
+    });
   };
 
   return createPortal(
@@ -29,7 +31,7 @@ const ModifyContainerModal = ({id, previousName, previousCategory}: Props) => {
             ✕
           </label>
           <h3 className="text-lg font-bold text-center mb-4">
-            Modifier le récipient
+            Modifier le restaurant
           </h3>
           <form action="submit" className="flex flex-col gap-4">
             <label className="input-group w-full">
@@ -43,20 +45,20 @@ const ModifyContainerModal = ({id, previousName, previousCategory}: Props) => {
               />
             </label>
             <label className="input-group w-full">
-              <span className="w-1/3">Catégorie</span>
+              <span className="w-1/3">Adresse</span>
               <input
                 className="input input-bordered"
                 type="text"
-                placeholder="Catégorie"
-                value={category}
-                onChange={evt => setCategory(evt.target.value)}
+                placeholder="Adresse du restaurant"
+                value={address}
+                onChange={evt => setAddress(evt.target.value)}
               />
             </label>
             <button
               className="btn btn-primary"
-              onClick={e => triggerModifyContainer(e)}
+              onClick={e => triggerModifyRestaurant(e)}
             >
-              Modifier le récipient
+              Modifier le produit
             </button>
           </form>
         </div>
@@ -66,4 +68,4 @@ const ModifyContainerModal = ({id, previousName, previousCategory}: Props) => {
   );
 };
 
-export default ModifyContainerModal;
+export default ModifyProductModal;

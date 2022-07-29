@@ -499,6 +499,6 @@ export const addUser = async (
   ]);
 };
 
-export const modifyUsers = async (id: string, modifications: any) => {
+export const modifyUser = async (id: string, modifications: any) => {
   await supabase.from('user').update(modifications).eq('id', id);
 };

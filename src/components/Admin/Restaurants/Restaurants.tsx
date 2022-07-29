@@ -31,6 +31,7 @@ const Restaurants = () => {
               <th>Nom</th>
               <th>Adresse</th>
               <th>Supprimer</th>
+              <th>Modifier</th>
             </tr>
           </thead>
           <tbody>
