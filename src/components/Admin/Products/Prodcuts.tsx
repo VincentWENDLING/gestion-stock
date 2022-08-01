@@ -5,6 +5,7 @@ import {ItemInDB, ItemCategory} from '../../../types';
 
 import Product from './Product';
 import AddProductModal from './AddProductModal';
+import UpdateCategoryContainersModal from './UpdateCategoryContainersModal';
 
 const filterItems = (
   items: Array<ItemInDB>,
@@ -49,13 +50,22 @@ const Products = () => {
   return (
     <>
       <AddProductModal />
+      <UpdateCategoryContainersModal />
       <div className="flex flex-col gap-4">
-        <label
-          htmlFor="my-modal-3"
-          className="btn modal-button btn-primary md:w-1/2"
-        >
-          Ajouter un produit
-        </label>
+        <div className="flex w-full gap-2">
+          <label
+            htmlFor="my-modal-3"
+            className="btn modal-button btn-primary w-1/2"
+          >
+            Ajouter un produit
+          </label>
+          <label
+            htmlFor="item_category-container"
+            className="btn btn-secondary w-1/2"
+          >
+            Gérer les récipient par catégorie
+          </label>
+        </div>
         <table className="w-full table table-compact table-zebra md:table-normal">
           <thead>
             <tr>

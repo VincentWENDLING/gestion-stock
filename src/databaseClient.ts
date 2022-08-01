@@ -3,6 +3,7 @@ import {
   Order,
   OrderDB,
   OrderItemContainer,
+  ProductCateogryContainer,
   Status,
   WasteDB,
   WasteItemContainer,
@@ -501,4 +502,60 @@ export const addUser = async (
 
 export const modifyUser = async (id: string, modifications: any) => {
   await supabase.from('user').update(modifications).eq('id', id);
+};
+
+/**************************** ITEM_CATEGORIES-CONTAINER ****************************/
+
+export const getContainersByCategoryName = async (name: string) => {
+  const {data} = await supabase
+    .from('item_category-container')
+    .select('*')
+    .eq('category', name);
+
+  return data === null ? [] : data;
+};
+
+export const deleteContainersByCategoryName = async (name: string) => {
+  await supabase.from('item_category-container').delete().eq('category', name);
+};
+
+export const insertContainersForCategory = async (
+  cateogry: string,
+  containers: Array<string>
+) => {
+  const data = containers.map(container => {
+    return {category: cateogry, container_id: container};
+  });
+
+  await supabase.from('item_category-container').insert(data);
+};
+
+export const getAllContainersByCategory = async () => {
+  const categories = await getProductCategories();
+  let {data} = await supabase.from('item_category-container').select('*');
+
+  data = data === null ? [] : data;
+
+  const sortedContainers: {[k: string]: Array<ProductCateogryContainer>} = {};
+
+  for (const category of categories) {
+    const categoryContainers = [];
+    for (const container of data) {
+      if (container.category === category.name) {
+        categoryContainers.push(container);
+      }
+    }
+    sortedContainers[category.name] = categoryContainers;
+  }
+
+  console.log(sortedContainers);
+
+  return sortedContainers;
+};
+
+/**************************** PRODUCT-CATEGORIES ****************************/
+
+export const getProductCategories = async () => {
+  const {data} = await supabase.from('product-categories').select('*');
+  return data === null ? [] : data;
 };

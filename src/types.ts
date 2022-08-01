@@ -178,3 +178,9 @@ export type FullUser = {
   role: Role;
   restaurant: Restaurant;
 };
+
+export type ProductCateogryContainer = {
+  id: string;
+  name: string;
+  container_id: string;
+};

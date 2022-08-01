@@ -21,6 +21,7 @@ import {
   getRestaurantsName,
   logUserAuth,
   getAllRestaurants,
+  getAllContainersByCategory,
 } from '../databaseClient';
 import {
   Container,
@@ -30,6 +31,7 @@ import {
   Order,
   OrderItem,
   OrderItemContainer,
+  ProductCateogryContainer,
   Restaurant,
   Status,
   User,
@@ -40,6 +42,8 @@ import {OrderStore} from './order-store';
 class Store {
   itemCategories: Array<ItemCategory> = [];
   containerCategories: Array<ContainerCategory> = [];
+  productCategoryContainers: {[k: string]: Array<ProductCateogryContainer>} =
+    {};
 
   orderStore: OrderStore;
 
@@ -82,6 +86,8 @@ class Store {
     this.initOrder();
     this.initRestaurants();
 
+    this.initProductCategoryContainers();
+
     makeAutoObservable(this);
 
     makePersistable(this, {
@@ -94,6 +100,10 @@ class Store {
       ],
       storage: window.localStorage,
     });
+  }
+
+  async initProductCategoryContainers() {
+    this.productCategoryContainers = await getAllContainersByCategory();
   }
 
   async initRestaurants() {
@@ -226,6 +236,22 @@ class Store {
       for (const container of containerCategory.containers) {
         if (container.name === name) {
           return container.id;
+        }
+      }
+    }
+    return '';
+  }
+
+  /**
+   * this function takes the ID of a container as a parameter and returns its name
+   * @param ID the ID of the container
+   * @returns the name of the container (defaut is an empty string)
+   */
+  getContainerNameByID(ID: string): string {
+    for (const containerCategory of this.containerCategories) {
+      for (const container of containerCategory.containers) {
+        if (container.id === ID) {
+          return container.name;
         }
       }
     }

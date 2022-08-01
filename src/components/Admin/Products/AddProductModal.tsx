@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {createPortal} from 'react-dom';
 import {addItem} from '../../../databaseClient';
 import store from '../../../stores/store';
+import {ItemCategory} from '../../../types';
 
 const AddProductModal = () => {
   const [name, setName] = useState('');
@@ -9,6 +10,10 @@ const AddProductModal = () => {
   const [labPriority, setLabPriority] = useState(0);
   const [orderPriority, setOrderPriority] = useState(0);
   const [defaultContainer, setDefaultContainer] = useState('');
+
+  const categories = store.itemCategories.map(
+    (itemCategory: ItemCategory) => itemCategory.name
+  );
 
   const createProduct = (e: any) => {
     e.preventDefault();
@@ -63,13 +68,17 @@ const AddProductModal = () => {
             </label>
             <label className="input-group">
               <span>Catégorie</span>
-              <input
-                placeholder="Catégorie du produit"
-                className="input input-bordered"
-                type="text"
+              <select
+                className="select select-sm select-bordered"
                 value={category}
+                defaultValue=""
                 onChange={e => setCategory(e.target.value)}
-              />
+              >
+                <option value="">----------</option>
+                {categories.map((category: string) => (
+                  <option value={category}>{category}</option>
+                ))}
+              </select>
             </label>
             <label className="input-group">
               <span>Ordre Labo</span>
