@@ -24,7 +24,7 @@ const Container = ({id, name, category}: ContainerProp) => {
           <DeleteButton deleteFunction={deleteContainer} id={id} />
         </td>
         <label
-          htmlFor="modify-modal"
+          htmlFor={`modify-modal-${id}`}
           className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg modal-button btn-primary md:mt-4 mt-2"
         >
           Modifier

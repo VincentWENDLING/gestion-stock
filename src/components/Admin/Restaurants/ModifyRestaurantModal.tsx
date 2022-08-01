@@ -21,11 +21,15 @@ const ModifyProductModal = ({id, previousName, previousAddress}: Props) => {
 
   return createPortal(
     <>
-      <input type="checkbox" id="modify-modal" className="modal-toggle" />
+      <input
+        type="checkbox"
+        id={`modify-modal-${id}`}
+        className="modal-toggle"
+      />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="modify-modal"
+            htmlFor={`modify-modal-${id}`}
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕

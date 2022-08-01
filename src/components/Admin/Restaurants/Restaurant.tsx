@@ -27,7 +27,7 @@ const Restaurant = ({restaurant}: RestaurantProp) => {
           <DeleteButton deleteFunction={deleteRestaurant} id={restaurant.id} />
         </td>
         <label
-          htmlFor="modify-modal"
+          htmlFor={`modify-modal-${restaurant.id}`}
           className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg modal-button btn-primary md:mt-4 mt-2"
         >
           Modifier

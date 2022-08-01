@@ -95,7 +95,7 @@ const NavBar = ({setLogOut}: NavBarProp) => {
                 setIsActive(false);
               }}
             >
-              Deconnexion
+              Déconnexion
             </a>
           </li>
         </ol>
