@@ -132,7 +132,7 @@ const History = () => {
       ) : (
         <>
           <div>
-            <h1 className="text-2xl text-center mb-8 select-none">
+            <h1 className="text-2xl text-center mb-4 select-none">
               Historique
             </h1>
             <div
@@ -158,11 +158,12 @@ const History = () => {
                   Déclarer pertes
                 </button>
               </div>
-              <div className="flex gap-4 select-none">
+              <div className="flex flex-col sm:flex-row gap-2 select-none items-center justify-center mr-4">
                 <p
-                  className={`${
+                  className={`text-xs ${
                     currentMode === 'Order' ? 'font-bold underline' : ''
-                  }`}
+                  }
+                  md:text-sm lg:text-lg`}
                 >
                   Commandes
                 </p>
@@ -173,9 +174,10 @@ const History = () => {
                   onChange={changeMode}
                 />
                 <p
-                  className={`${
+                  className={`text-xs ${
                     currentMode === 'Waste' ? 'font-bold underline' : ''
-                  }`}
+                  }
+                  md:text-sm lg:text-lg`}
                 >
                   Pertes
                 </p>
