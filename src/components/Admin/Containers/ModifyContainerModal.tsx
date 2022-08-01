@@ -19,7 +19,11 @@ const ModifyContainerModal = ({id, previousName, previousCategory}: Props) => {
 
   return createPortal(
     <>
-      <input type="checkbox" id={`modify-modal-${id}`} className="modal-toggle" />
+      <input
+        type="checkbox"
+        id={`modify-modal-${id}`}
+        className="modal-toggle"
+      />
       <div className="modal">
         <div className="modal-box relative">
           <label

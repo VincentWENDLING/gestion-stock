@@ -56,7 +56,7 @@ const Products = () => {
         >
           Ajouter un produit
         </label>
-        <table className="w-full table table-compact md:table-normal">
+        <table className="w-full table table-compact table-zebra md:table-normal">
           <thead>
             <tr>
               <th>Nom</th>
