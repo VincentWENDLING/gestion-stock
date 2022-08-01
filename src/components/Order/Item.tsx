@@ -63,12 +63,12 @@ const Item = (props: any) => {
   };
 
   return (
-    <div className="flex justify-center gap-1">
+    <div className="flex justify-center items-stretch gap-1">
       <p className="w-1/3 flex justify-center items-center text-center border border-solid border-slate-300 rounded-lg">
         {name}
       </p>
       <select
-        className={`w-1/3 select select-bordered select-sm ${
+        className={`w-1/3 select select-bordered ${
           containerChanged ? 'bg-yellow-300' : ''
         }`}
         name="Container"
@@ -104,7 +104,7 @@ const Item = (props: any) => {
         />
       ) : (
         <div className="flex justify-centera items-center gap-2">
-          <p className="">{newQuantity}</p>
+          <p className="font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl">{newQuantity}</p>
           <img
             className={`w-8 ${
               isOrdered || !isEditable ? 'pointer-events-none' : ''
