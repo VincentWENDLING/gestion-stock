@@ -28,7 +28,7 @@ const Users = () => {
         <table className="w-full table table-compact table-zebra md:table-normal">
           <thead>
             <tr>
-              <th>Nom</th>
+              <th style={{position: 'static'}}>Nom</th>
               <th>Rôle</th>
               <th>Restaurant</th>
               <th>Supprimer</th>

@@ -28,7 +28,7 @@ const Containers = () => {
           <table className="w-full table table-compact table-zebra md:table-normal">
             <thead>
               <tr>
-                <th>Nom</th>
+                <th style={{position: 'static'}}>Nom</th>
                 <th>Catégorie</th>
                 <th>Supprimer</th>
                 <th>Modifier</th>

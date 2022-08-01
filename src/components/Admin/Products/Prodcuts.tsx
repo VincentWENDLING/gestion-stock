@@ -59,7 +59,7 @@ const Products = () => {
         <table className="w-full table table-compact table-zebra md:table-normal">
           <thead>
             <tr>
-              <th>Nom</th>
+              <th style={{position: 'static'}}>Nom</th>
               <th>Catégorie</th>
               <th>Unité par défaut</th>
               <th>Supprimer</th>

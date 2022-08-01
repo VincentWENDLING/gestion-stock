@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {default as ItemComponent} from './Item';
 
 import store from '../../stores/store';
-import {Item, OrderItem} from '../../types';
+import {OrderItem} from '../../types';
 
 interface CategoryProp {
   categoryName: string;

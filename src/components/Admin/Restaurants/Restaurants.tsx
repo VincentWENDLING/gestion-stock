@@ -28,7 +28,7 @@ const Restaurants = () => {
         <table className="w-full table table-compact table-zebra md:table-normal">
           <thead>
             <tr>
-              <th>Nom</th>
+              <th style={{position: 'static'}}>Nom</th>
               <th>Adresse</th>
               <th>Supprimer</th>
               <th>Modifier</th>
