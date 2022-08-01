@@ -77,20 +77,34 @@ const Products = () => {
                 />
               </td>
               <td className="p-0">
-                <input
-                  className="input input-sm input-bordered"
-                  type="text"
+                <select
+                  className="select select-sm select-bordered"
                   value={categoryFilter}
+                  defaultValue=""
                   onChange={event => setCategoryFilter(event.target.value)}
-                />
+                >
+                  <option value="">----------</option>
+                  {categories.map((category: string) => (
+                    <option value={category}>{category}</option>
+                  ))}
+                </select>
               </td>
               <td className="p-0">
-                <input
-                  className="input input-sm input-bordered"
-                  type="text"
+                <select
+                  className="select select-sm select-bordered"
                   value={containerFilter}
-                  onChange={event => setContainerFilter(event.target.value)}
-                />
+                  defaultValue=""
+                  onChange={e => setContainerFilter(e.target.value)}
+                >
+                  <option value="">----------</option>
+                  {store.containerCategories.map(containerCategory => (
+                    <optgroup label={containerCategory.name}>
+                      {containerCategory.containers.map(container => (
+                        <option value={container.name}>{container.name}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
               </td>
             </tr>
             {filterItems(
