@@ -64,11 +64,13 @@ const Item = (props: any) => {
 
   return (
     <div className="flex justify-center items-stretch gap-1">
-      <p className="w-1/3 flex justify-center items-center text-center border border-solid border-slate-300 rounded-lg">
-        {name}
-      </p>
+      <div className="w-1/3 tooltip" data-tip={name}>
+        <p className="w-full h-full flex items-center border border-solid border-slate-300 rounded-lg truncate">
+          {name}
+        </p>
+      </div>
       <select
-        className={`w-1/3 select select-bordered ${
+        className={`w-1/3 select select-bordered select-sm md:select-md${
           containerChanged ? 'bg-yellow-300' : ''
         }`}
         name="Container"
@@ -88,7 +90,7 @@ const Item = (props: any) => {
       {category === 'Pain' || category === 'Cookies' ? (
         <input
           id="quantityInput"
-          className={`w-3/12 input input-bordered input-sm 
+          className={`w-3/12 input input-bordered input-sm md:input-md 
                                 ${
                                   quantityDiff > 0
                                     ? 'bg-green-300'
@@ -104,19 +106,9 @@ const Item = (props: any) => {
         />
       ) : (
         <div className="flex justify-centera items-center gap-2">
-          <p className="font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl">
+          <p className="w-4 lg:w-5 xl:w-8 font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl">
             {newQuantity}
           </p>
-          <img
-            className={`w-8 ${
-              isOrdered || !isEditable ? 'pointer-events-none' : ''
-            }`}
-            src={PlusCircleOutline}
-            alt="Add 1"
-            onClick={() =>
-              handleQuantityChange((parseInt(newQuantity) + 1).toString())
-            }
-          />
           <img
             className={`w-8 ${
               isOrdered || !isEditable ? 'pointer-events-none' : ''
@@ -125,6 +117,16 @@ const Item = (props: any) => {
             alt="Remove 1"
             onClick={() =>
               handleQuantityChange((parseInt(newQuantity) - 1).toString())
+            }
+          />
+          <img
+            className={`w-8 ${
+              isOrdered || !isEditable ? 'pointer-events-none' : ''
+            }`}
+            src={PlusCircleOutline}
+            alt="Add 1"
+            onClick={() =>
+              handleQuantityChange((parseInt(newQuantity) + 1).toString())
             }
           />
         </div>
