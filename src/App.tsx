@@ -9,7 +9,7 @@ import Lab from './pages/Lab';
 import Delivery from './pages/Delivery';
 
 import History from './pages/History';
-import Statistiques from './pages/Statistiques';
+import Statistiques from './pages/Statistics';
 import Unauthorized from './pages/Unauthorized';
 import LogIn from './pages/LogIn';
 
@@ -56,7 +56,7 @@ const App = () => {
           <Route path="delivery" element={<Delivery />}></Route>
           <Route path="admin" element={<Admin />}></Route>
           <Route path="/" element={<History />}></Route>
-          <Route path="statistiques" element={<Statistiques />}></Route>
+          <Route path="statistics" element={<Statistiques />}></Route>
           <Route path="unauthorized" element={<Unauthorized />}></Route>
         </Routes>
       </main>

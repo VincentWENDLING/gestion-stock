@@ -37,6 +37,7 @@ const UpdateCategoryContainersModal = () => {
               value={currentCateogry}
               onChange={e => setCurrentCateogry(e.target.value)}
             >
+              <option value="">----------</option>
               {categories.map(category => (
                 <option value={category}>{category}</option>
               ))}

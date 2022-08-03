@@ -82,7 +82,7 @@ const NavBar = ({setLogOut}: NavBarProp) => {
                   ? `underline ${userRole === 'Admin' ? '' : 'hidden'}`
                   : `${userRole === 'Admin' ? '' : 'hidden'}`
               }
-              to="/statistiques"
+              to="/statistics"
             >
               Statistiques
             </NavLink>

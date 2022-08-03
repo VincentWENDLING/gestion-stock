@@ -46,6 +46,7 @@ const ContainerCategories = ({category}: Props) => {
           value={currentContainer}
           onChange={e => setCurrentContainer(e.target.value)}
         >
+          <option value="">----------</option>
           {store.containerCategories.map(containerCategory => (
             <optgroup
               label={containerCategory.name}

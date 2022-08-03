@@ -548,8 +548,6 @@ export const getAllContainersByCategory = async () => {
     sortedContainers[category.name] = categoryContainers;
   }
 
-  console.log(sortedContainers);
-
   return sortedContainers;
 };
 
@@ -558,4 +556,35 @@ export const getAllContainersByCategory = async () => {
 export const getProductCategories = async () => {
   const {data} = await supabase.from('product-categories').select('*');
   return data === null ? [] : data;
+};
+
+/**************************** STATISTICS ****************************/
+
+export const getItemOrdersByID = async (
+  itemID: string,
+  startDate: Date,
+  endDate: Date
+) => {
+  let {data} = await supabase
+    .from('order-item-container')
+    .select(
+      `*,
+      order: order_id(*)
+    `
+    )
+    .eq('item_id', itemID);
+
+  if (data === null) return [];
+
+  data = data.filter(item => {
+    const created_at = new Date(item.order.created_at);
+    return (
+      item.order.isLastModifiedOrder &&
+      created_at > startDate &&
+      created_at < endDate
+    );
+  });
+
+  console.log(data);
+  return data;
 };
