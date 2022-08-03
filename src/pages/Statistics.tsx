@@ -60,7 +60,7 @@ const Statistiques = () => {
               <option value="day">Jour</option>
               <option value="week">Semaine</option>
               <option value="month">Mois</option>
-              <option value="custom">Personalisée</option>
+              <option value="custom" disabled>Personalisée</option>
             </select>
           </label>
         </div>
@@ -86,7 +86,7 @@ const Statistiques = () => {
           </label>
           <button
             className="btn btn-primary btn-outline"
-            onClick={(e) => displayData(e)}
+            onClick={e => displayData(e)}
           >
             Afficher
           </button>
