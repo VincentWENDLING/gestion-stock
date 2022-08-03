@@ -584,7 +584,5 @@ export const getItemOrdersByID = async (
       created_at < endDate
     );
   });
-
-  console.log(data);
   return data;
 };
